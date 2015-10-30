@@ -1,7 +1,10 @@
 #!/usr/bin/python
 
-import sys, subprocess
+import sys, subprocess, config
 from datetime import datetime
+
+if not config.directory:
+    config.directory = ''
 
 YT_PREFIX = 'https://www.youtube.com/watch?v='
 NOTIFY_CMD = 'notify.sh'
@@ -23,7 +26,7 @@ def download_urls(urls_filename, reverse=True, log_filename='youtube-playlist-do
     logfile.write('\n' + str(datetime.now) + '\n')
 
     # use -f best to avoid merging and just get the best overall format (saves time)
-    youtube_cmd_with_args = ['youtube-dl', '--ignore-errors', '--netrc', '--ignore-config', '--write-info-json', '--no-mtime', '-f best']
+    youtube_cmd_with_args = ['youtube-dl', '--ignore-errors', '--netrc', '--ignore-config', '--write-info-json', '--no-mtime', '-f best', '-o ' + config.directory]
 
     try:
         for line in url_lines:
