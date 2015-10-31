@@ -7,7 +7,7 @@ if not config.directory:
     config.directory = ''
 
 YT_PREFIX = 'https://www.youtube.com/watch?v='
-NOTIFY_CMD = 'notify.sh'
+NOTIFY_CMD = config.notify_cmd or 'echo'
 
 run = subprocess.run
 
