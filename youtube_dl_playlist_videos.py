@@ -36,6 +36,7 @@ def download_urls(urls_filename, reverse=True, log_filename='youtube-playlist-do
             print('Done downloading url:', url_id)
             notify('Done downloading url:' + url_id)
             logfile.write('Downloaded\t' + url_id + '\t' + title + '\n')
+            logfile.flush()
     except KeyboardInterrupt as e:
         print("Exiting")
         logfile.close()
