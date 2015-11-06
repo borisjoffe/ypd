@@ -29,7 +29,8 @@ def download_urls(urls_filename, reverse=True, log_filename='youtube-playlist-do
         url_lines = reversed(url_lines)
 
     logfile = open(log_filename, 'w')
-    logfile.write('\n' + str(datetime.now) + '\n')
+    logfile.write('\n' + str(datetime.now()) + '\n')
+    logfile.flush()
 
     # use -f best to avoid merging and just get the best overall format (saves time)
     youtube_cmd_with_args = ['youtube-dl', '--ignore-errors', '--ignore-config', '--write-info-json', '--no-mtime', '-f best', '-o ' + get_full_filename()]
